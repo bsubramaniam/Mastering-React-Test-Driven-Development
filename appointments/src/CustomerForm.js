@@ -1,54 +1,53 @@
 import React, { useState } from 'react';
-import ReactDOM from 'react-dom';
 
 export const CustomerForm = ({
   firstName,
   lastName,
   phoneNumber,
-  onSubmit,
+  onSubmit
 }) => {
   const [customer, setCustomer] = useState({
     firstName,
     lastName,
-    phoneNumber,
+    phoneNumber
   });
 
-  const handleChangeFirstName = ({ target: { name, value } }) =>
+  const handleChange = ({ target }) =>
     setCustomer(customer => ({
       ...customer,
-      [name]: value
+      [target.name]: target.value
     }));
 
   return (
-    <form
-      id="customer"
-      onSubmit={ () => onSubmit(customer) }
-    >
+    <form id="customer" onSubmit={() => onSubmit(customer)}>
       <label htmlFor="firstName">First name</label>
       <input
         type="text"
         name="firstName"
         id="firstName"
-        value={customer.firstName}
-        onChange={handleChangeFirstName}
+        value={firstName}
+        onChange={handleChange}
       />
+
       <label htmlFor="lastName">Last name</label>
       <input
         type="text"
         name="lastName"
         id="lastName"
-        value={customer.lastName}
-        onChange={handleChangeFirstName}
+        value={lastName}
+        onChange={handleChange}
       />
+
       <label htmlFor="phoneNumber">Phone number</label>
       <input
         type="text"
         name="phoneNumber"
         id="phoneNumber"
-        value={customer.phoneNumber}
-        onChange={handleChangeFirstName}
+        value={phoneNumber}
+        onChange={handleChange}
       />
+
       <input type="submit" value="Add" />
     </form>
-  )
+  );
 };
