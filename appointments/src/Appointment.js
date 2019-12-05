@@ -8,7 +8,7 @@ export const Appointment = ({ customer: { firstName } }) => {
 const formatAppoitmentTime = startsAt => {
   const [h, m] = new Date(startsAt).toTimeString().split(':');
   return `${h}:${m}`;
-}
+};
 
 export const AppointmentsDayView = ({ appointments }) => {
   const [selectedAppointment, setSelectedAppointment] = useState(0);
