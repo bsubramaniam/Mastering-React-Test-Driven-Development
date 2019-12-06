@@ -120,11 +120,14 @@ export const AppointmentForm = ({
     startsAt
   });
 
-  const handleServiceChange = ({ target: { value } }) =>
+  const handleServiceChange = useCallback(
+    ({ target: { value } }) =>
     setAppointment(appointment => ({
       ...appointment,
       service: value
-    }));
+    })),
+    []
+  );
 
   const handleStartsAtChange = useCallback(
     ({ target: { value } }) =>
@@ -141,7 +144,7 @@ export const AppointmentForm = ({
       <select
         name="service"
         id="service"
-        value={service}
+        value={appointment.service}
         onChange={handleServiceChange}>
         <option />
         {selectableServices.map(s => (
